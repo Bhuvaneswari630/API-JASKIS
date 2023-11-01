@@ -106,3 +106,13 @@ db.bounties.findOneAndDelete({ name: 'Lokinkajou' })
 db.bounties.deleteMany({ client: 'Songbird' })
 // 4. Update all captured statuses to true
 db.bounties.updateMany({}, { $set: { captured: 'true' } })
+
+// Bonus
+// Find all Scavengers who helped catch Thanoceros
+db.scavengers.find({ 'captured.name': 'Thanoceros' })
+
+// Find all Scavengers who helped catch an animal bounty with a reward greater than $11000.
+db.scavengers.find({ 'captured.reward': {$gt : 11000} })
+
+// Find all Scavengers that don't have a weapon
+db.scavengers.find({'weapon': null})
